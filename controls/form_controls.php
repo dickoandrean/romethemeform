@@ -59,7 +59,7 @@ class RFormControls extends \Elementor\Base_Data_Control
                     <?php echo esc_html__('EDIT FORM', 'romethemeform') ?>
                 </button>
                 </div>
-                <div id="myModal<?php echo $control_uid ?>" class="modal">
+                <div id="myModal<?php echo esc_attr($control_uid) ?>" class="modal">
                     <div class="modal-content">
                         <div class="elementor-editor-header-iframe">
                         <div class="rform-editor-header">

@@ -211,7 +211,7 @@ class Form
                         </svg>
                         <div style="width: 100%;">
                             <h5>Success</h5>
-                            <?php echo esc_html__($success_msg, 'romethemeform'); ?>
+                            <?php echo esc_html($success_msg); ?>
                         </div>
                         <div>
                             <a type="button" class="close-msg">Close</a>
