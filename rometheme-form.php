@@ -164,21 +164,21 @@ class RomeThemeForm
         );
 
         if (file_exists(WP_PLUGIN_DIR . '/elementor/elementor.php')) {
-            $btn['text'] = esc_html__('Activate Elementor', 'romethemeform-plugin');
+            $btn['text'] = esc_html__('Activate Elementor', 'romethemeform');
             $btn['url']  = wp_nonce_url('plugins.php?action=activate&plugin=elementor/elementor.php&plugin_status=all&paged=1', 'activate-plugin_elementor/elementor.php');
         } else {
-            $btn['text'] = esc_html__('Install Elementor', 'romethemeform-plugin');
+            $btn['text'] = esc_html__('Install Elementor', 'romethemeform');
             $btn['url']  = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=elementor'), 'install-plugin_elementor');
         }
 
         $message = sprintf(
             /* translators: 1: Plugin name 2: Elementor */
-            esc_html__('%1$s requires %2$s to work properly. Please install and activate it first.', 'romethemeform-plugin'),
-            '<strong>' . esc_html__('RomeThemeForm', 'romethemeform-plugin') . '</strong>',
-            '<strong>' . esc_html__('Elementor', 'romethemeform-plugin') . '</strong>'
+            esc_html__('%1$s requires %2$s to work properly. Please install and activate it first.', 'romethemeform'),
+            '<strong>' . esc_html__('RomeThemeForm', 'romethemeform') . '</strong>',
+            '<strong>' . esc_html__('Elementor', 'romethemeform') . '</strong>'
         );
 
-        \Oxaim\Libs\Notice::instance('romethemeform-plugin', 'unsupported-elementor-version')
+        \Oxaim\Libs\Notice::instance('romethemeform', 'unsupported-elementor-version')
             ->set_type('error')
             ->set_message($message)
             ->set_button($btn)
@@ -188,7 +188,7 @@ class RomeThemeForm
     function romethemeform_add_menu()
     {
         add_menu_page(
-            'romethemeform-plugin', //page-title
+            'romethemeform', //page-title
             'RomethemeForm', //title
             'manage_options', //capability
             'romethemeform', //slug

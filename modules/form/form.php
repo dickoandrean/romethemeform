@@ -65,20 +65,20 @@ class Form
     function romethemeform_template_post_type()
     {
         $labels = array(
-            'name'               => esc_html__('Rometheme Form Templates', 'romethemeform-plugin'),
-            'singular_name'      => esc_html__('Templates', 'romethemeform-plugin'),
-            'menu_name'          => esc_html__('Form', 'romethemeform-plugin'),
-            'name_admin_bar'     => esc_html__('Form', 'romethemeform-plugin'),
-            'add_new'            => esc_html__('Add New', 'romethemeform-plugin'),
-            'add_new_item'       => esc_html__('Add New Template', 'romethemeform-plugin'),
-            'new_item'           => esc_html__('New Template', 'romethemeform-plugin'),
-            'edit_item'          => esc_html__('Edit Template', 'romethemeform-plugin'),
-            'view_item'          => esc_html__('View Template', 'romethemeform-plugin'),
-            'all_items'          => esc_html__('All Templates', 'romethemeform-plugin'),
-            'search_items'       => esc_html__('Search Templates', 'romethemeform-plugin'),
-            'parent_item_colon'  => esc_html__('Parent Templates:', 'romethemeform-plugin'),
-            'not_found'          => esc_html__('No Templates found.', 'romethemeform-plugin'),
-            'not_found_in_trash' => esc_html__('No Templates found in Trash.', 'romethemeform-plugin'),
+            'name'               => esc_html__('Rometheme Form Templates', 'romethemeform'),
+            'singular_name'      => esc_html__('Templates', 'romethemeform'),
+            'menu_name'          => esc_html__('Form', 'romethemeform'),
+            'name_admin_bar'     => esc_html__('Form', 'romethemeform'),
+            'add_new'            => esc_html__('Add New', 'romethemeform'),
+            'add_new_item'       => esc_html__('Add New Template', 'romethemeform'),
+            'new_item'           => esc_html__('New Template', 'romethemeform'),
+            'edit_item'          => esc_html__('Edit Template', 'romethemeform'),
+            'view_item'          => esc_html__('View Template', 'romethemeform'),
+            'all_items'          => esc_html__('All Templates', 'romethemeform'),
+            'search_items'       => esc_html__('Search Templates', 'romethemeform'),
+            'parent_item_colon'  => esc_html__('Parent Templates:', 'romethemeform'),
+            'not_found'          => esc_html__('No Templates found.', 'romethemeform'),
+            'not_found_in_trash' => esc_html__('No Templates found in Trash.', 'romethemeform'),
         );
 
         $args = array(
@@ -97,9 +97,9 @@ class Form
 
 
         $label_entries = array(
-            'name'               => esc_html__('Rometheme Form Entries', 'romethemeform-plugin'),
-            'singular_name'      => esc_html__('Entry', 'romethemeform-plugin'),
-            'menu_name'          => esc_html__('Entries', 'romethemeform-plugin'),
+            'name'               => esc_html__('Rometheme Form Entries', 'romethemeform'),
+            'singular_name'      => esc_html__('Entry', 'romethemeform'),
+            'menu_name'          => esc_html__('Entries', 'romethemeform'),
         );
 
         $args_entries = array(
