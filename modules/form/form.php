@@ -181,12 +181,59 @@ class Form
         $form_id = shortcode_atts(array(
             'form_id' => ''
         ), $atts);
-
+        $restricted = get_post_meta($form_id['form_id'], 'rtform_form_restricted', true);
+        $success_msg = get_post_meta($form_id['form_id'], 'rtform_form_success_message', true);
+        ob_start();
         if ('' == $form_id['form_id']) {
-            return '<h6>Please Select Form.</h6>';
+?> <h6>Please Select Form.</h6>
+        <?php
         } else {
-            return \Elementor\Plugin::$instance->frontend->get_builder_content_for_display($form_id['form_id'], true);
+        ?>
+            <form id="rform" data-form="<?php echo esc_attr($form_id['form_id']) ?>">
+                <div class="require-login msg">
+                    <div class="require-msg-body">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#FF0000" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                        </svg>
+                        <div style="width: 100% ;">
+                            <h5>Required Login</h5>
+                            Please Login for Submit Form.
+                        </div>
+                        <div>
+                            <a type="button" class="close-msg">Close</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="success-submit msg">
+                    <div class="success-body">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#4CAF50" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </svg>
+                        <div style="width: 100%;">
+                            <h5>Success</h5>
+                            <?php echo esc_html__($success_msg, 'romethemeform'); ?>
+                        </div>
+                        <div>
+                            <a type="button" class="close-msg">Close</a>
+                        </div>
+                    </div>
+                </div>
+                <?php echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display($form_id['form_id'], true); ?>
+            </form>
+            <?php
+            if ($restricted == true) {
+                if (!is_user_logged_in()) {
+            ?>
+                    <script>
+                        jQuery(document).ready(function($) {
+                            $('#rform').addClass('rform-dsb');
+                        });
+                    </script>
+<?php
+                }
+            }
         }
+        return ob_get_clean();
     }
 
     public static function rformsendform()
