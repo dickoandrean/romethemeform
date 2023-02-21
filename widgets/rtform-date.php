@@ -8,7 +8,7 @@ class RTForm_Date extends \Elementor\Widget_Base
     }
     public function get_title()
     {
-        return 'RF - Date';
+        return 'RForm - Date';
     }
     public function get_categories()
     {
@@ -64,7 +64,7 @@ class RTForm_Date extends \Elementor\Widget_Base
                 'rform-label-top' => esc_html__('Top', 'romethemeform'),
                 'rform-label-left' => esc_html__('Left', 'romethemefom-plugin')
             ],
-            'default' => 'rform-label-left',
+            'default' => 'rform-label-top',
             'description' => esc_html__('Select label position. where you want to see it. top of the input or left of the input.', 'romethemeform'),
             'condition' => [
                 'show_label' => 'yes'
@@ -201,6 +201,14 @@ class RTForm_Date extends \Elementor\Widget_Base
             'label' => esc_html__('Margin', 'romethemeform'),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em', 'rem'],
+            'default' => [
+                'top' => '0',
+                'right' => '0',
+                'bottom' => '10',
+                'left' => '0',
+                'unit' => 'px',
+                'isLinked' => 'false',
+            ],
             'selectors' => [
                 '{{WRAPPER}} .rform-label-input' => 'margin:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
             ]

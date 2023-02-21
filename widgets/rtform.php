@@ -8,7 +8,7 @@ class RForm extends \Elementor\Widget_Base
     }
     public function get_title()
     {
-        return 'Rometheme Form';
+        return 'RForm';
     }
     public function get_icon()
     {

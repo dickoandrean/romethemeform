@@ -8,7 +8,7 @@ class RTForm_TextArea extends \Elementor\Widget_Base
     }
     public function get_title()
     {
-        return 'RF - Text Area';
+        return 'RForm - Text Area';
     }
     public function get_categories()
     {
@@ -64,7 +64,7 @@ class RTForm_TextArea extends \Elementor\Widget_Base
                 'rform-label-top' => esc_html__('Top', 'romethemeform'),
                 'rform-label-left' => esc_html__('Left', 'romethemefom-plugin')
             ],
-            'default' => 'rform-label-left',
+            'default' => 'rform-label-top',
             'description' => esc_html__('Select label position. where you want to see it. top of the input or left of the input.', 'romethemeform'),
             'condition' => [
                 'show_label' => 'yes'
@@ -74,7 +74,7 @@ class RTForm_TextArea extends \Elementor\Widget_Base
         $this->add_control('label_text', [
             'label' => esc_html__('Label', 'romethemeform'),
             'type' => \Elementor\Controls_Manager::TEXT,
-            'default' => esc_html__('Text', 'romethemeform'),
+            'default' => esc_html__('Message', 'romethemeform'),
             'condition' => [
                 'show_label' => 'yes'
             ]
@@ -83,14 +83,14 @@ class RTForm_TextArea extends \Elementor\Widget_Base
         $this->add_control('name_input', [
             'label' => esc_html__('Name', 'romethemeform'),
             'type' => \Elementor\Controls_Manager::TEXT,
-            'default' => esc_html__('rform-textarea', 'romethemeform'),
+            'default' => esc_html__('rform-message ', 'romethemeform'),
             'description' => esc_html__('Name is must required. Enter name without space or any special character. use only underscore/ hyphen (_/-) for multiple word. Name must be different.', 'romethemeform')
         ]);
 
         $this->add_control('placeholder_input', [
             'label' => esc_html__('Placeholder', 'romethemeform'),
             'type' => \Elementor\Controls_Manager::TEXT,
-            'default' => esc_html__('Input Text Here', 'romethemeform')
+            'default' => esc_html__('Input Message Here', 'romethemeform')
         ]);
 
         $this->add_control('help_text', [
@@ -208,6 +208,14 @@ class RTForm_TextArea extends \Elementor\Widget_Base
             'label' => esc_html__('Margin', 'romethemeform'),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em', 'rem'],
+            'default' => [
+                'top' => '0',
+                'right' => '0',
+                'bottom' => '10',
+                'left' => '0',
+                'unit' => 'px',
+                'isLinked' => 'false',
+            ],
             'selectors' => [
                 '{{WRAPPER}} .rform-label-input' => 'margin:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
             ]
@@ -227,6 +235,29 @@ class RTForm_TextArea extends \Elementor\Widget_Base
             'label' => esc_html__('Input', 'romethemeform'),
             'tab' => \Elementor\Controls_Manager::TAB_STYLE
         ]);
+
+        $this->add_control(
+            'input_height',
+            [
+                'label' => esc_html__('Height', 'romethemeform'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .rform-input' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->add_responsive_control('input_padding', [
             'label' => esc_html__('Padding', 'romethemeform'),
@@ -428,12 +459,12 @@ class RTForm_TextArea extends \Elementor\Widget_Base
         ]);
 
         $this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'placeholder_typography',
-				'selector' => '{{WRAPPER}} .rform-input::placeholder',
-			]
-		);
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'placeholder_typography',
+                'selector' => '{{WRAPPER}} .rform-input::placeholder',
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -536,7 +567,7 @@ class RTForm_TextArea extends \Elementor\Widget_Base
             <div class="rform-control <?php echo esc_attr($settings['label_position']) ?>">
                 <?php if ('yes' === $settings['show_label']) : ?>
                     <label class="rform-label-input" for="rform-input-textarea-<?php echo esc_attr($this->get_id_int()); ?>">
-                        <?php echo esc_html__( $label_text, 'romethemeform') ?>
+                        <?php echo esc_html__($label_text, 'romethemeform') ?>
                         <?php if ('yes' === $settings['required_input']) : ?><span> * </span><?php endif; ?>
                     </label>
                 <?php endif; ?>

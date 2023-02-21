@@ -53,7 +53,7 @@ $rtform = new WP_Query(['post_type' => 'romethemeform_form']);
                         data-form-restricted ="' . esc_attr(get_post_meta($id_post, "rtform_form_restricted", true)) . '"
                         data-form-msg-success="' . esc_attr($success_msg) . '"
                         >
-                        Edit</a>&nbsp;|&nbsp; <a class="link" href="' . esc_url($edit_elementor) . '">Edit with Elementor</a> &nbsp;|&nbsp;<a class="link-danger" href="' . esc_url($delete) . '">Trash</a></small>';
+                        Edit</a>&nbsp;|&nbsp; <a class="link" href="' . esc_url($edit_elementor) . '">Edit Form</a> &nbsp;|&nbsp;<a class="link-danger" href="' . esc_url($delete) . '">Trash</a></small>';
                         echo '</td>';
                         echo '<td>' . esc_html($shortcode) . '</td>';
                         echo '<td>
@@ -121,7 +121,7 @@ $rtform = new WP_Query(['post_type' => 'romethemeform_form']);
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button id="rform-save-button" onclick="add_new_form()" type="button" class="btn btn-primary rform-save-btn">Save changes</button>
+                <button id="rform-save-button" onclick="add_new_form()" type="button" class="btn btn-primary rform-save-btn">Save & Edit</button>
             </div>
         </div>
     </div>

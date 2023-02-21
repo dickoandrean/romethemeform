@@ -8,7 +8,7 @@ class RTForm_Email extends \Elementor\Widget_Base
     }
     public function get_title()
     {
-        return 'RF - Email';
+        return 'RForm - Email';
     }
     public function get_categories()
     {
@@ -64,7 +64,7 @@ class RTForm_Email extends \Elementor\Widget_Base
                 'rform-label-top' => esc_html__('Top', 'romethemeform'),
                 'rform-label-left' => esc_html__('Left', 'romethemefom-plugin')
             ],
-            'default' => 'rform-label-left',
+            'default' => 'rform-label-top',
             'description' => esc_html__('Select label position. where you want to see it. top of the input or left of the input.', 'romethemeform'),
             'condition' => [
                 'show_label' => 'yes'
@@ -83,14 +83,14 @@ class RTForm_Email extends \Elementor\Widget_Base
         $this->add_control('name_input', [
             'label' => esc_html__('Name', 'romethemeform'),
             'type' => \Elementor\Controls_Manager::TEXT,
-            'default' => esc_html__('rform-text', 'romethemeform'),
+            'default' => esc_html__('rform-email', 'romethemeform'),
             'description' => esc_html__('Name is must required. Enter name without space or any special character. use only underscore/ hyphen (_/-) for multiple word. Name must be different.', 'romethemeform')
         ]);
 
         $this->add_control('placeholder_input', [
             'label' => esc_html__('Placeholder', 'romethemeform'),
             'type' => \Elementor\Controls_Manager::TEXT,
-            'default' => esc_html__('Input Text Here', 'romethemeform')
+            'default' => esc_html__('Input Email Here', 'romethemeform')
         ]);
 
         $this->add_control('help_text', [
@@ -208,6 +208,14 @@ class RTForm_Email extends \Elementor\Widget_Base
             'label' => esc_html__('Margin', 'romethemeform'),
             'type' => \Elementor\Controls_Manager::DIMENSIONS,
             'size_units' => ['px', '%', 'em', 'rem'],
+            'default' => [
+                'top' => '0',
+                'right' => '0',
+                'bottom' => '10',
+                'left' => '0',
+                'unit' => 'px',
+                'isLinked' => 'false',
+            ],
             'selectors' => [
                 '{{WRAPPER}} .rform-label-input' => 'margin:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
             ]

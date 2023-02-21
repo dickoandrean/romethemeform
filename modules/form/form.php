@@ -26,6 +26,7 @@ class Form
         add_action('wp_ajax_nopriv_export_entries', [$this, 'export_entries']);
         add_filter('single_template', array($this, 'load_canvas_template'));
         add_shortcode('rform', [$this, 'rform_shortcode']);
+        
     }
 
     function add_form_menu()
@@ -150,6 +151,8 @@ class Form
         add_post_meta($form_id, 'rtform_form_restricted', sanitize_text_field($_POST['require-login']));
         add_post_meta($form_id, 'rtform_form_success_message', sanitize_text_field($_POST['success-message']));
         add_post_meta($form_id, 'rtform_shortcode', '[rform form_id=' . $form_id . ']');
+        $url = admin_url('post.php?post=' . $form_id . '&action=elementor');
+        wp_send_json_success(['url' => $url]);
     }
 
     public function rtformupdate()

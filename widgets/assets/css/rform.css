@@ -41,14 +41,15 @@
 
 .success-body h5,
 .require-msg-body h5 {
-    font-weight: bold;
+    font-weight: bold !important;
+    margin-bottom : 0px !important;
 }
 
 .close-msg {
     background-color: transparent !important;
-    color: gray;
-    border: none;
-    padding-inline-end: 20px;
+    color: gray !important;
+    border: none !important;
+    padding-inline-end: 20px !important;
 }
 
 .close-msg:hover {

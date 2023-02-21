@@ -43,8 +43,8 @@ class Plugin
     {
         wp_enqueue_style('rtform-text-style', \RomeThemeForm::widget_url() . 'assets/css/rtform_text.css');
         wp_enqueue_style('rform-style', \RomeThemeForm::widget_url() . 'assets/css/rform.css');
-        wp_enqueue_style('spinner-style' , \RomeThemeForm::widget_url() . 'assets/css/spinner-loading.css');
-        wp_enqueue_style('rform-btn-style' , \RomeThemeForm::widget_url() . 'assets/css/rform-button.css');;
+        wp_enqueue_style('spinner-style', \RomeThemeForm::widget_url() . 'assets/css/spinner-loading.css');
+        wp_enqueue_style('rform-btn-style', \RomeThemeForm::widget_url() . 'assets/css/rform-button.css');;
     }
 
     public static function register_widget_scripts()
@@ -58,11 +58,20 @@ class Plugin
 
     public static function add_elementor_widget_categories($elements_manager)
     {
-        $elements_manager->add_category('romethemeform_form_fields', [
-            'title' => esc_html__('Rometheme Form')
-        ]);
-    }
+        $categories = [];
+        $categories['romethemeform_form_fields'] = [
+            'title' => 'Rometheme Form',
+        ];
 
+        $old_categories = $elements_manager->get_categories();
+        $categories = array_merge($categories, $old_categories);
+
+        $set_categories = function ($categories) {
+            $this->categories = $categories;
+        };
+
+        $set_categories->call($elements_manager, $categories);
+    }
     public static function add_controls($controls_manager)
     {
         require_once(RomeThemeForm::controls_dir() . 'form_controls.php');

@@ -11,7 +11,7 @@ class Rform_Button_Submit extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return 'RF Submit Button';
+        return 'RForm - Submit Button';
     }
 
     public function get_icon()
@@ -71,6 +71,18 @@ class Rform_Button_Submit extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'btn_fullwidth',
+            [
+                'label' => esc_html__('Full Width', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'textdomain'),
+                'label_off' => esc_html__('No', 'textdomain'),
+                'return_value' => 'yes',
+                'default' => 'no',
+            ]
+        );
+
         $this->add_responsive_control(
             'btn_text_align',
             [
@@ -90,11 +102,14 @@ class Rform_Button_Submit extends \Elementor\Widget_Base
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
-                'default' => 'center',
+                'default' => 'start',
                 'toggle' => true,
                 'selectors' => [
                     '{{WRAPPER}} .rform-button-container' => 'justify-content: {{VALUE}};',
                 ],
+                'condition' => [
+                    'btn_fullwidth' => 'no'
+                ]
             ]
         );
 
@@ -414,7 +429,7 @@ class Rform_Button_Submit extends \Elementor\Widget_Base
 
 ?>
         <div class="rform-button-container">
-            <button class="rform-button-submit" type="button" id="rform-button-submit">
+            <button class="rform-button-submit <?php echo ($settings['btn_fullwidth'] === 'yes') ? 'rform-btn-fullwidth' : '' ?>" type="button" id="rform-button-submit">
                 <?php if ($settings['icon_position'] == 'before') :
                     \Elementor\Icons_Manager::render_icon($settings['btn_icon'], ['aria-hidden' => 'true', 'class' => 'rform-btn-icon']);
                 endif; ?>

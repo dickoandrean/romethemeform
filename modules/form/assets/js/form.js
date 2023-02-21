@@ -32,8 +32,8 @@ function add_new_form() {
             type: 'post',
             url: romethemeform_ajax_url.ajax_url,
             data: data,
-            success: (data) => {
-                location.href = romethemeform_url.form_url;
+            success: (response) => {
+                location.href = response.data.url;
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.error("The following error occured: " + textStatus, errorThrown);

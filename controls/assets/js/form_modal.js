@@ -19,6 +19,7 @@ function closemodal(uid) {
         var currentSelectedWidget = panel.getCurrentPageView().getOption('editedElementView');
 
         elementorEditor.saver.saveEditor({
+            status: elementorEditor.settings.page.model.get('post_status'),
             onSuccess: function () {
                 modal.hide();
                 currentSelectedWidget.renderOnChange();
