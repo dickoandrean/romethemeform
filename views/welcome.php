@@ -65,7 +65,7 @@
         <div class="col px-4 d-flex flex-column justify-content-center align-items-center text-center">
             <h3>Rate Plugin</h3>
             <h6 class="h6-color">Let us know about your experience with Rometheme plugin.</h6>
-            <a target="_blank" href="" class="btn rkit-s2-btn" type="button">RATE US</a>
+            <a target="_blank" href="https://wordpress.org/support/plugin/romethemeform/reviews/" class="btn rkit-s2-btn" type="button">RATE US</a>
         </div>
     </div>
     <div>

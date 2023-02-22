@@ -43,6 +43,9 @@ class RomeThemeForm
             add_action('elementor/editor/before_register_scripts', [\RomethemeFormPlugin\Plugin::class, 'register_widget_scripts']);
             add_action('elementor/editor/before_enqueue_scripts', [\RomethemeFormPlugin\Plugin::class, 'register_widget_scripts']);
             add_action('elementor/controls/register', [\RomethemeFormPlugin\Plugin::class, 'add_controls']);
+            add_action('wp_ajax_remove_notice', [$this, 'remove_notice']);
+            add_action('rform_notices', [$this, 'rform_notice']);
+            do_action('rform_notices');
         }
     }
 
@@ -204,10 +207,28 @@ class RomeThemeForm
 
     function register_style()
     {
+        wp_enqueue_script('notice-js', self::plugin_url() . 'assets/js/notice.js' , array('jquery'), '1.0', true );
+        wp_localize_script('notice-js', 'ajax_url', array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        ));
         $screen = get_current_screen();
         if ($screen->id == 'toplevel_page_romethemeform') {
             wp_enqueue_style('style.css', self::plugin_url() . 'bootstrap/css/bootstrap.css');
         }
+    }
+
+    public function rform_notice()
+    {
+        $rkit_hasbeen_rated = get_user_meta(get_current_user_id(), 'rform-hasbeen-rated');
+        if (empty($rkit_hasbeen_rated)) {
+            add_action('admin_notices',  [\RomethemeFormPlugin\Plugin::class, 'rform_notice_raw']);
+        }
+    }
+
+    function remove_notice()
+    {
+        $userid = get_current_user_id();
+        add_user_meta($userid, 'rform-hasbeen-rated', 'true');
     }
 }
 
