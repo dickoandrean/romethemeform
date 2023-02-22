@@ -4,7 +4,7 @@ Tags: addons, widget, elementor, form ,form builder , extension
 Requires at least: 6.1
 Tested up to: 6.1
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,3 +42,8 @@ Login your WordPress dashboard,  From the left menu click the RomethemeForm icon
 == Changelog ==
 Version : 1.0.0 
 * Initial version of RomethemeForm for Elementor Plugin
+
+Version : 1.0.1
+* Redirect to elementor editor after add new form
+* Bug Fixed
+* Add fullwidth style in submit button

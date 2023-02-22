@@ -41,7 +41,7 @@ class Form
 
     function romethemeform_entries_call()
     {
-        if (!isset($_GET['entry_id']) || $_GET['entry_id'] == "" || $_GET['rform_id'] != '') {
+        if (!isset($_GET['entry_id']) || $_GET['entry_id'] == "" || isset($_GET['rform_id'])) {
             require_once $this->dir . 'views/entries-table.php';
         } else {
             require_once $this->dir . 'views/entries-view.php';

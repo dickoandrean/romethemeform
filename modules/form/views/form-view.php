@@ -66,7 +66,7 @@ $rtform = new WP_Query(['post_type' => 'romethemeform_form']);
                         echo '</tr>';
                     }
                 } else {
-                    echo '<tr><td class="text-center" colspan="4">' . esc_html('No Data') . '</td></tr>';
+                    echo '<tr><td class="text-center" colspan="6">' . esc_html('No Data') . '</td></tr>';
                 }
 
                 ?>

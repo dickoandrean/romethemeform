@@ -108,7 +108,7 @@ class Rform_Button_Submit extends \Elementor\Widget_Base
                     '{{WRAPPER}} .rform-button-container' => 'justify-content: {{VALUE}};',
                 ],
                 'condition' => [
-                    'btn_fullwidth' => 'no'
+                    'btn_fullwidth!' => 'yes'
                 ]
             ]
         );

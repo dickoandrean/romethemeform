@@ -78,7 +78,7 @@ class Plugin
         $controls_manager->register(new \RFormControls());
     }
 
-    public function rform_notice_raw()
+    public static function rform_notice_raw()
     {
         $btn1 = [
             'default_class' => 'button',
